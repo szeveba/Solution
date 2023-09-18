@@ -120,6 +120,8 @@ namespace ConsoleProject
             Console.WriteLine("Input hossza " + (input.Length < 5 ? "kisebb" : "nagyobb") + " mint 5.");
 
 
+
+
         }
     }
 }
