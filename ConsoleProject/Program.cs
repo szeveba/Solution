@@ -1,4 +1,6 @@
-﻿namespace ConsoleProject
+﻿using System.Globalization;
+
+namespace ConsoleProject
 {
     internal class Program
     {
@@ -49,7 +51,7 @@
 
             //logikai változó inicializálása literállal
             bool b3 = true;
-            
+
 
             //Tömbök
             var t = new int[3];
@@ -74,7 +76,7 @@
             string ertek = "3";
             int intErtek = int.Parse(ertek);
             //string átalakítása double-re
-            ertek = "3,14"; 
+            ertek = "3,14";
             // !!!!!!!!!!!!!
             // a magyarok vesszővel írják, ezt számításba veszi a C#
             // ha ponttal adod meg => InvalidFormatException
@@ -83,9 +85,41 @@
             //Konzolról szám beolvasása, átalakítása, kétszeresének kiíratása konzolra
             string input = Console.ReadLine();
             double szamertek = double.Parse(input);
+
             double output = szamertek * 2;
             Console.WriteLine(output);
-            Console.WriteLine(double.Parse(Console.ReadLine())*2);
+            Console.WriteLine(double.Parse(Console.ReadLine()) * 2);
+
+            //Vezérlési szerkezetek
+            //Elágazás
+            // if-else
+            if (input.Length < 5)
+            {
+                Console.WriteLine("Input hossza kisebb mint 5.");
+            }
+            else
+            {
+                Console.WriteLine("Input hossza nagyobb mint 5.");
+            }
+            // switch-case
+            switch (input)
+            {
+                case "ASD":
+                case "asd":
+                    Console.WriteLine("Input értéke = asd");
+                    break;
+                case "d asd asd sad sa":
+                    Console.WriteLine("Input értéke = d asd asd sad sa");
+                    break;
+                default:
+                    Console.WriteLine("Input értéke = " + input);
+                    break;
+            }
+
+            //Extra plusz egy just for fun: (Ternary) Conditional operator
+            Console.WriteLine("Input hossza " + (input.Length < 5 ? "kisebb" : "nagyobb") + " mint 5.");
+
+
         }
     }
 }
