@@ -1,9 +1,197 @@
-﻿namespace E1_Valtozok
+﻿using System.Diagnostics;
+
+namespace E1_Valtozok
 {
     internal class Program
     {
+        static void Szamologep1()
+        {
+            //SZÁMOLÓGÉP
+            string kifejezes = "5 + 12";
+            // + - * /
+            char oper = ' ';
+            if (kifejezes.Contains('+'))
+            {
+                oper = '+';
+            }
+            else if (kifejezes.Contains('-'))
+            {
+                oper = '-';
+            }
+            else if (kifejezes.Contains('*'))
+            {
+                oper = '*';
+            }
+            else if (kifejezes.Contains('/'))
+            {
+                oper = '/';
+            }
+            if (oper != ' ')
+            {
+                string[] splits = kifejezes.Split(oper, StringSplitOptions.TrimEntries);
+                if (splits.Length == 2)
+                {
+                    int eredmeny = 0;
+                    try
+                    {
+                        int o1 = int.Parse(splits[0]);
+                        int o2 = int.Parse(splits[1]);
+                        switch (oper)
+                        {
+                            case '+':
+                                eredmeny = o1 + o2;
+                                break;
+                            case '-':
+                                eredmeny = o1 - o2;
+                                break;
+                            case '*':
+                                eredmeny = o1 * o2;
+                                break;
+                            case '/':
+                                eredmeny = o1 / o2;
+                                break;
+                        }
+                        Console.WriteLine($"{kifejezes} = {eredmeny}");
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Nem tudtam számértékké konvertálni az operandusokat.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Ezt nem tudtam kifejezésként kiértékelni.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nem tartalmaz ismert műveleti jelet");
+            }
+
+        }
+        static void EgyMegoldas()
+        {
+            Console.WriteLine("A számod:");
+            Random rnd = new Random();
+            int randomnumber = rnd.Next(101);
+            
+
+            Console.WriteLine(randomnumber);
+
+            
+            Console.WriteLine("Kérem az első számot:");
+            int number1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Kérem a műveletet:");
+            string operation = Console.ReadLine();
+
+            Console.WriteLine("Kérem a második számot:");
+            int number2 = int.Parse(Console.ReadLine());
+
+            int c = 0;
+            switch (operation)
+            {
+                case "+":
+                    c = number1 + number2;
+                    break;
+                case "-":
+                    c = number1 - number2;
+                    break;
+                case "*":
+                    c = number1 * number2;
+                    break;
+                case "/":
+                    c = number1 / number2;
+                    break;
+            }
+            Console.WriteLine("Az eredményed: " + c);
+            if (c == randomnumber)
+            {
+                Console.WriteLine("Az eredményed helyes!");
+            }
+            else
+            {
+                Console.WriteLine("Az eredményed helytelen!");
+            }
+        }
+        static void Szamologep()
+        {
+            //SZÁMOLÓGÉP
+            string kifejezes = "5 + 12";
+            // + - * /
+            char oper = ' ';
+            if (kifejezes.Contains('+'))
+            {
+                oper = '+';
+            }
+            else if (kifejezes.Contains('-'))
+            {
+                oper = '-';
+            }
+            else if (kifejezes.Contains('*'))
+            {
+                oper = '*';
+            }
+            else if (kifejezes.Contains('/'))
+            {
+                oper = '/';
+            }
+            if (oper != ' ')
+            {
+                string[] splits = kifejezes.Split(oper, StringSplitOptions.TrimEntries);
+                if (splits.Length == 2)
+                {
+                    int o1;
+                    if (int.TryParse(splits[0], out o1))
+                    {
+                        if (int.TryParse(splits[1], out int o2))
+                        {
+                            int eredmeny = 0;
+                            switch (oper)
+                            {
+                                case '+':
+                                    eredmeny = o1 + o2;
+                                    break;
+                                case '-':
+                                    eredmeny = o1 - o2;
+                                    break;
+                                case '*':
+                                    eredmeny = o1 * o2;
+                                    break;
+                                case '/':
+                                    eredmeny = o1 / o2;
+                                    break;
+                            }
+                            Console.WriteLine($"{kifejezes} = {eredmeny}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Az operátor utáni számot nem sikerült átalakítanom!");
+
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Az operátor előtti számot nem sikerült átalakítanom!");
+                    }
+
+
+                }
+                else
+                {
+                    Console.WriteLine("Ezt nem tudtam kifejezésként kiértékelni.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nem tartalmaz ismert műveleti jelet");
+            }
+
+        }
         static void Main(string[] args)
         {
+            EgyMegoldas();
+            string ssadass = "";
+            return;
             //Primitív típusok
 
             bool logikai = false; //true
@@ -84,7 +272,7 @@
             //String interpolation (gyorsabb)
             // "a + b"
             s3 = $"{s1} + {s2}"; //s3 = s1 + " + " + s2;
-
+            s3 = "a" + s3;
             /*
             StringBuilder sb = new StringBuilder();
             sb.Append(s3);
@@ -232,6 +420,11 @@
             {
                 break; //continue;
             } while (true);
+
+
+
+
+
         }
     }
 }

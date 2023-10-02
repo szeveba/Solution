@@ -15,6 +15,7 @@ namespace ConsoleProject
         }
         static void Main(string[] args)
         {
+            Console.Write("HelloWorld!\a\rh");
             int asd = 13;
             int eredmeny = Osszeadas(ref asd, ref asd);
             Console.WriteLine(eredmeny);
