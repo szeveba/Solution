@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.Design.Serialization;
+using System.Security.Cryptography.X509Certificates;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace E2
@@ -62,6 +63,44 @@ Ciklusvezérlés:
      */
     internal class Program
     {
+        public static bool Eldöntés(string[] tömb)
+        {
+            int i = 0;
+            while (i<tömb.Length && !(tömb[i]!=""))
+            {
+                i += 1;
+            }
+            bool van = i < tömb.Length;
+            return van;
+        }
+        public static bool Eldöntés2(string[] tömb)
+        {
+            for (int i = 0; i < tömb.Length; i++)
+            {
+                if (tömb[i] == "") return false;
+            }
+            return true;
+        }
+        static void Feladat1()
+        {
+            Console.WriteLine("Hello world!");
+        }
+        static void Feladat2()
+        {
+            Console.Write("Adj meg egy nevet: ");
+            string nev = Console.ReadLine();
+            Console.WriteLine($"Szia {nev}!");
+        }
+
+        static int EgészSzámBekérés(string üzenet)
+        {
+            Console.Write(üzenet+": ");
+            string inp = Console.ReadLine();
+            int op = int.Parse(inp);
+            return op;
+        }
+
+
         static void OsztályszintűEljárás()
         {
 
@@ -78,6 +117,7 @@ Ciklusvezérlés:
         public static Random Random = new Random();
         static void Main(string[] args)
         {
+            Feladat1();
             int x = 1, y = 2;
 
             if (args.Length == 0)
@@ -92,6 +132,7 @@ Ciklusvezérlés:
             if (x < y)
             {
                 Console.WriteLine("x kisebb mint y");
+                
             }
             else
             {
@@ -105,10 +146,11 @@ Ciklusvezérlés:
                 }
             }
 
+
             //számláló
             for (int i = 0; i < 100; i++)
             {
-
+                Console.WriteLine();
             }
             //előltesztelő ciklus
             while (true)
@@ -120,6 +162,7 @@ Ciklusvezérlés:
             {
 
             } while (true);
+            
             //bejárás
             int[] gyűjtemény = new int[] { 1, 2, 3 };
             foreach (var item in gyűjtemény)
