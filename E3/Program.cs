@@ -11,18 +11,6 @@ namespace E3
         }
         static void Main(string[] args)
         {
-            while (true)
-            {
-                try
-                {
-                    F1();
-
-                }
-                catch (Exception ex)
-                {
-                }
-            }
-
             /*
              * 
                 3.7.1.6.6 Vezérlési szerkezetek, ciklusok
@@ -197,10 +185,10 @@ namespace E3
             }
 
 
-
+            int a = 2, b = 3;
 
             //HÁTULTESZTELŐ
-
+            Math.Min(a, b);
             char c = ' ';
             do
             {
