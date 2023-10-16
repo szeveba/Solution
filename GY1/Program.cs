@@ -48,10 +48,14 @@
             Console.WriteLine($"\t* => {num1 * num2}");
             Console.WriteLine($"\t/ => {num1 / num2}");
         }
+
+        /// <summary>
+        /// Írj programot, mely beolvas két egész számot, és kiírja a képernyőre a nagyobbikat!
+        /// </summary>
         public static void F5()
         {
-            decimal num1 = ReadDecimal("Adj meg egy számot: ");
-            decimal num2 = ReadDecimal("Adj meg még egy számot: ");
+            long num1 = ReadLong("Adj meg egy számot: ");
+            long num2 = ReadLong("Adj meg még egy számot: ");
             if (num1 == num2)
             {
                 Console.WriteLine("A két szám egyenlő.");
@@ -61,7 +65,7 @@
                 Console.WriteLine($"A nagyobbik szám: {(num1 < num2 ? num2 : num1)}");
             }
         }
-        private static decimal ReadDecimal(string message)
+        private static decimal ReadDecimal(string message = "Adj meg egy számot: ")
         {
             Console.Write(message);
             string input = Console.ReadLine();
@@ -75,13 +79,14 @@
             }
             return num;
         }
-        private static int ReadInt(string message)
+
+        private static long ReadLong(string message = "Adj meg egy számot: ")
         {
             Console.Write(message);
             string input = Console.ReadLine();
-            int num = 0;
+            long num = 0;
 
-            while (!int.TryParse(input, out num))
+            while (!long.TryParse(input, out num))
             {
                 Console.WriteLine($"Nem tudtam számként értelmezni ezt: {input}");
                 Console.Write(message);
@@ -89,12 +94,73 @@
             }
             return num;
         }
+        private static double ReadDouble(string message = "Adj meg egy számot: ")
+        {
+            Console.Write(message);
+            string input = Console.ReadLine();
+            double num = 0;
+
+            while (!double.TryParse(input, out num))
+            {
+                Console.WriteLine($"Nem tudtam számként értelmezni ezt: {input}");
+                Console.Write(message);
+                input = Console.ReadLine();
+            }
+            return num;
+        }
+
+        /// <summary>
+        ///  Írj programot, mely beolvas két pozitív egész számot, és kiírja a számtani és mértani közepüket! A gyökvonáshoz használd a Math.Sqrt() függvényt!
+        /// </summary>
+        public static void F8()
+        {
+            long num1 = ReadLong();
+            long num2 = ReadLong("Adj meg mégegy számot: ");
+            Console.WriteLine($"Számtani közép: {(num1 + num2) / 2.0}");
+            Console.WriteLine($"Mértani közép: {Math.Round(Math.Sqrt(num1 * num2), 3)}");
+        }
+        /// <summary>
+        /// Írj programot, mely beolvas egy pozitív egész számot, és kiírja az egész számokat a képernyőre eddig a számig, egymástól szóközzel elválasztva!
+        /// </summary>
+        public static void F15()
+        {
+            long num1 = ReadLong();
+            for (int i = 1; i < num1; i++)
+            {
+                Console.Write(i + " ");
+            }
+        }
+        /// <summary>
+        /// Írj programot, mely beolvas egy pozitív egész számot, és kiírja az osztóit!
+        /// </summary>
+        public static void F17()
+        {
+            long num1 = ReadLong();
+            Console.Write("Az általad megadott szám osztói: [1");
+            for (int i = 2; i < num1; i++)
+            {
+                if (num1 % i == 0)
+                {
+                    Console.Write(", " + i);
+                }
+            }
+            Console.Write(", " + num1 + "]");
+        }
+        /// <summary>
+        /// Írj programot, mely beolvassa a hatvány alapját és a kitevőt, és kiírja a hatványértéket!
+        /// </summary>
+        public static void F20()
+        {
+            double num1 = ReadDouble("Adj meg egy hatványalapot: ");
+            double num2 = ReadDouble("Adj meg egy kitevőt: ");
+            Console.WriteLine("A hatványérték: " + Math.Pow(num1, num2));
+        }
     }
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Suranyisz.F20();
         }
     }
 }
