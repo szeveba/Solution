@@ -128,21 +128,6 @@ namespace E3
                 Ciklusvezérlés:
                 - Ciklus futtatásának leállítása, Break
                 - Ciklusátugrás, Continue
-
-                3.7.1.6.7 Tömbök és listák
-                - Egydimenziós tömb
-                - Tömbök bevezetése
-                - Tömb definiálása, inicalizálása
-                - Tömb elemének módosítása
-                - Tömb bejárása ciklusok segítségével
-                - Hibakezelés, túlcímzés
-                - Többdimenziós tömb
-                - Mátrixok kezelése
-                - Listák bevezetése
-                - ArrayList / List definiálása, inicializálása
-                - ArrayList / List elemének módosítása
-                - ArrayList / List bejárása iterátor- és ciklusok segítségével
-                - Autoboxing
             */
             bool logikaiKifejezés = false;
 
