@@ -15,6 +15,7 @@
             Feladat5(adatok);
             Feladat7(adatok);
             Feladat8(adatok);
+            OptimalizáltFeladat8(adatok);
         }
         /// <summary>
         /// Feladat megoldások kiíratására.
@@ -126,15 +127,16 @@
                 }
             }
             // A feladat szerint feltételezhetem, hogy lesz legalább egy a feltételt teljesítő sportoló, így nem kell aggódni a 0-val való osztás miatt.
-            double átlag = Math.Round(szum / db, 12);
+            double átlag = szum / db;
+            MegoldásKiiratás(7, $"Átlagos idő: {Math.Round(átlag,12)} óra");
             MegoldásKiiratás(7, $"Átlagos idő: {átlag} óra");
         }
         /// <summary>
-        /// Keresse meg a női és a férfi kategóriák győzteseit és írja ki nevüket, rajtszámukat és időeredményeiket a minta szerint! Feltételezheti, hogy egyik kategóriában sem alakult ki oltverseny és mindkét kategóriában volt célba érkező futó.
+        /// Keresse meg a női és a férfi kategóriák győzteseit és írja ki nevüket, rajtszámukat és időeredményeiket a minta szerint! Feltételezheti, hogy egyik kategóriában sem alakult ki holtverseny és mindkét kategóriában volt célba érkező futó.
         /// </summary>
         private static void Feladat8(string[][] adatok)
         {
-            //kiindulási alap: maximumkiválasztás programozási tétel, szerintem ezt a megoldást jobban végiggondoltam mint az aki kitalálta a feladatot, hiába azonos szerkezetű bemeneti fájl, kivételes esetben ennél egyszerűbb megoldás hibás eredményt adna (de attól még járna amúgy a max pontszám valószínűleg)
+            // kiindulási alap: maximumkiválasztás programozási tétel, szerintem ezt a megoldást jobban végiggondoltam mint az aki kitalálta a feladatot, hiába azonos szerkezetű bemeneti fájl, kivételes esetben ennél egyszerűbb megoldás hibás eredményt adna (de attól még járna amúgy a max pontszám valószínűleg)
             int nőiMaxIdx = -1;
             int férfiMaxIdx = -1;
             for (int i = 0; i < adatok.Length; i++)
@@ -161,7 +163,49 @@
             MegoldásKiiratás(8,
                 $"Verseny győztesei\n" +
                 $"\tNők: {adatok[nőiMaxIdx][NévIndex]} ({adatok[nőiMaxIdx][RajtszámIndex]}.) - {adatok[nőiMaxIdx][VersenyIdőIndex]}\n" +
-                $"\tFérfiak {adatok[férfiMaxIdx][NévIndex]} ({adatok[férfiMaxIdx][RajtszámIndex]}.) - {adatok[férfiMaxIdx][VersenyIdőIndex]}");
+                $"\tFérfiak: {adatok[férfiMaxIdx][NévIndex]} ({adatok[férfiMaxIdx][RajtszámIndex]}.) - {adatok[férfiMaxIdx][VersenyIdőIndex]}");
+        }
+        /// <summary>
+        /// Keresse meg a női és a férfi kategóriák győzteseit és írja ki nevüket, rajtszámukat és időeredményeiket a minta szerint! Feltételezheti, hogy egyik kategóriában sem alakult ki holtverseny és mindkét kategóriában volt célba érkező futó.
+        /// </summary>
+        private static void OptimalizáltFeladat8(string[][] adatok)
+        {
+            int nőiMaxIdx = NyertesKeresés(adatok, "Noi");
+            int férfiMaxIdx = NyertesKeresés(adatok, "Ferfi");
+            string[] nőiNyertes = adatok[nőiMaxIdx];
+            string[] férfiNyertes = adatok[férfiMaxIdx];
+            MegoldásKiiratás(8,
+                $"Verseny győztesei\n" +
+                $"\tNők: {nőiNyertes[NévIndex]} ({nőiNyertes[RajtszámIndex]}.) - {nőiNyertes[VersenyIdőIndex]}\n" +
+                $"\tFérfiak: {férfiNyertes[NévIndex]} ({férfiNyertes[RajtszámIndex]}.) - {férfiNyertes[VersenyIdőIndex]}");
+        }
+        private static int NyertesKeresés(string[][] adatok, string kategória)
+        {
+            int nyertesIdx = -1;
+            double nyertesIdő = double.MaxValue;
+            for (int i = 0; i < adatok.Length; i++)
+            {
+                string[] adatsor = adatok[i];
+                if (adatsor[KategóriaIndex] == kategória && adatsor[TávSzázalékIndex] == "100")
+                {
+                    double aktuálisIdő = IdőÓrában(adatsor[VersenyIdőIndex]);
+                    if (nyertesIdx == -1 || aktuálisIdő < nyertesIdő)
+                    {
+                        nyertesIdx = i;
+                        nyertesIdő = aktuálisIdő;
+                    }
+                }
+            }
+            return nyertesIdx;
+        }
+        static int MaxKivál(int[] értékek)
+        {
+            int maxIdx = 0;
+            for (int i = 1; i < értékek.Length; i++)
+            {
+                if (értékek[maxIdx] < értékek[i]) maxIdx = i;
+            }
+            return maxIdx;
         }
     }
 }
