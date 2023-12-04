@@ -2,6 +2,11 @@
 {
     internal class Program
     {
+        const int NévIndex = 0;
+        const int RajtszámIndex = 1;
+        const int KategóriaIndex = 2;
+        const int VersenyIdő = 3;
+        const int TávSzázalékIndex = 4;
         /// <summary>
         /// Feladat megoldások kiíratására.
         /// </summary>
@@ -34,10 +39,28 @@
             int indulókSzáma = adatok.Length;
             MegoldásKiiratás(3, $"Egyéni indulók: {indulókSzáma} fő");
         }
+        /// <summary>
+        /// Számolja meg és írja ki a képernyőre a minta szerint, hogy hány női sportoló teljesítette a teljes távot!
+        /// </summary>
+        private static void Feladat4(string[][] adatok)
+        {
+            //megszámlálás programozási tétel alkalmazása...
+            int db = 0;
+            foreach (var adatsor in adatok)
+            {
+                if (adatsor[KategóriaIndex] == "Noi" && adatsor[TávSzázalékIndex] == "100")
+                {
+                    db++;
+                }
+            }
+            MegoldásKiiratás(4, $"Célba érkező női sportolók: {db} fő");
+        }
         static void Main(string[] args)
         {
             var adatok = FájlBeolvasás("ub2017egyeni.txt");
             Feladat3(adatok);
+            Feladat4(adatok);
         }
+
     }
 }
