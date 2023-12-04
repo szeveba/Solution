@@ -60,7 +60,39 @@
             var adatok = FájlBeolvasás("ub2017egyeni.txt");
             Feladat3(adatok);
             Feladat4(adatok);
+            Feladat5(adatok);
         }
-
+        /// <summary>
+        /// Kérje be a felhasználótól egy sportoló nevét, majd határozza meg és írja ki a minta szerint, hogy a sportoló indult-e a versenyen! A keresést ne folytassa, ha az eredményt meg tudja határozni! Ha a sportoló indult a versenyen, akkor azt is írja ki a képernyőre, hogy a teljes távot teljesítette-e! Feltételezheti, hogy nem indultak azonos nevű sportolók ezen a versenyen.         
+        /// </summary>
+        private static void Feladat5(string[][] adatok)
+        {
+            Console.Write("5. feladat: Kérem a sportoló nevét: ");
+            string keresettNév = Console.ReadLine();
+            //eldöntés programozási tétel alkalmazása
+            int i = 0;
+            while (i < adatok.Length && !(adatok[i][NévIndex] == keresettNév))
+            {
+                i++;
+            }
+            Console.Write("\tIndult egyéniben a sportoló? ");
+            if (i < adatok.Length)
+            {
+                Console.WriteLine("Igen");
+                Console.Write("\tTeljesítette a teljes távot? ");
+                if (adatok[i][TávSzázalékIndex] == "100")
+                {
+                    Console.WriteLine("Igen");
+                }
+                else
+                {
+                    Console.WriteLine("Nem");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nem");
+            }
+        }
     }
 }
