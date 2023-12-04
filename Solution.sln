@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOPSample", "OOPSample\OOPS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cbradio", "cbradio\cbradio.csproj", "{08FF974F-886C-4B7E-B882-A1226E4ED740}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBRadioOOP", "CBRadioOOP\CBRadioOOP.csproj", "{BEB02BFB-9A01-4866-BCDA-157691256E0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CBRadioOOP", "CBRadioOOP\CBRadioOOP.csproj", "{BEB02BFB-9A01-4866-BCDA-157691256E0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultrabalaton", "Ultrabalaton\Ultrabalaton.csproj", "{AFEFDBAA-18C2-4375-A1FE-D9F036E1F539}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{BEB02BFB-9A01-4866-BCDA-157691256E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEB02BFB-9A01-4866-BCDA-157691256E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEB02BFB-9A01-4866-BCDA-157691256E0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFEFDBAA-18C2-4375-A1FE-D9F036E1F539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFEFDBAA-18C2-4375-A1FE-D9F036E1F539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFEFDBAA-18C2-4375-A1FE-D9F036E1F539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFEFDBAA-18C2-4375-A1FE-D9F036E1F539}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
