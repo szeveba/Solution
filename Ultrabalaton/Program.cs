@@ -10,7 +10,7 @@
             {
                 splits[i - 1] = lines[i].Split(';');
             }
-
+            Console.WriteLine($"3. feladat: Egyéni indulók: {splits.Length} fő");
         }
     }
 }
