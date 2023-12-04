@@ -118,7 +118,7 @@
             double szum = 0;
             foreach (var adatsor in adatok)
             {
-                if (adatsor[KategóriaIndex] == "Ferfi")
+                if (adatsor[KategóriaIndex] == "Ferfi" && adatsor[TávSzázalékIndex] == "100")
                 {
                     db++;
                     szum += IdőÓrában(adatsor[VersenyIdőIndex]);
