@@ -5,7 +5,7 @@
         const int NévIndex = 0;
         const int RajtszámIndex = 1;
         const int KategóriaIndex = 2;
-        const int VersenyIdő = 3;
+        const int VersenyIdőIndex = 3;
         const int TávSzázalékIndex = 4;
         /// <summary>
         /// Feladat megoldások kiíratására.
@@ -61,6 +61,7 @@
             Feladat3(adatok);
             Feladat4(adatok);
             Feladat5(adatok);
+            Feladat7(adatok);
         }
         /// <summary>
         /// Kérje be a felhasználótól egy sportoló nevét, majd határozza meg és írja ki a minta szerint, hogy a sportoló indult-e a versenyen! A keresést ne folytassa, ha az eredményt meg tudja határozni! Ha a sportoló indult a versenyen, akkor azt is írja ki a képernyőre, hogy a teljes távot teljesítette-e! Feltételezheti, hogy nem indultak azonos nevű sportolók ezen a versenyen.         
@@ -106,6 +107,26 @@
             int perc = int.Parse(splits[1]);
             int másodperc = int.Parse(splits[2]);
             return óra + perc / 60 + másodperc / 3600;
+        }
+        /// <summary>
+        /// Határozza meg és írja ki a minta szerint a teljes távot teljesítő férfi sportolók átlagos idejét órában! Feltételezheti, hogy legalább egy ilyen sportoló volt.
+        /// </summary>
+        private static void Feladat7(string[][] adatok)
+        {
+            //megszámlálás és sorozatszámítás programozási tétel együttesen alkalmazva
+            int db = 0;
+            double szum = 0;
+            foreach (var adatsor in adatok)
+            {
+                if (adatsor[KategóriaIndex] == "Ferfi")
+                {
+                    db++;
+                    szum += IdőÓrában(adatsor[VersenyIdőIndex]);
+                }
+            }
+            // A feladat szerint feltételezhetem, hogy lesz legalább egy a feltételt teljesítő sportoló, így nem kell aggódni a 0-val való osztás miatt.
+            double átlag = szum / db;
+            MegoldásKiiratás(7, $"Átlagos idő: {átlag} óra");
         }
     }
 }
