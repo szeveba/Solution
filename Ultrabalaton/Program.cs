@@ -3,6 +3,15 @@
     internal class Program
     {
         /// <summary>
+        /// Feladat megoldások kiíratására.
+        /// </summary>
+        /// <param name="feladatSorszám">Feladat sorszáma</param>
+        /// <param name="megoldás">A megoldás szövege</param>
+        static void MegoldásKiiratás(int feladatSorszám, string megoldás)
+        {
+            Console.WriteLine($"{feladatSorszám}. feladat: {megoldás}");
+        }
+        /// <summary>
         /// Bementi adatok előfeldolgozása a későbbi optimálisabb munka érdekében.
         /// </summary>
         /// <param name="fájlnév">Relatív elérési út</param>
@@ -25,20 +34,10 @@
             int indulókSzáma = adatok.Length;
             MegoldásKiiratás(3, $"Egyéni indulók: {indulókSzáma} fő");
         }
-        /// <summary>
-        /// Feladat megoldások kiíratására.
-        /// </summary>
-        /// <param name="feladatSorszám">Feladat sorszáma</param>
-        /// <param name="megoldás">A megoldás szövege</param>
-        static void MegoldásKiiratás(int feladatSorszám, string megoldás)
-        {
-            Console.WriteLine($"{feladatSorszám}. feladat: {megoldás}");
-        }
         static void Main(string[] args)
         {
             var adatok = FájlBeolvasás("ub2017egyeni.txt");
             Feladat3(adatok);
-
         }
     }
 }
