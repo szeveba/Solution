@@ -62,7 +62,45 @@
             Feladat4(adatok);
             Feladat5(adatok);
             Feladat7(adatok);
+            Feladat8(adatok);
         }
+
+        /// <summary>
+        /// Keresse meg a női és a férfi kategóriák győzteseit és írja ki nevüket, rajtszámukat és időeredményeiket a minta szerint! Feltételezheti, hogy egyik kategóriában sem alakult ki oltverseny és mindkét kategóriában volt célba érkező futó.
+        /// </summary>
+        private static void Feladat8(string[][] adatok)
+        {
+            //kiindulási alap: maximumkiválasztás programozási tétel, szerintem ezt a megoldást jobban végiggondoltam mint az aki kitalálta a feladatot, hiába azonos szerkezetű bemeneti fájl, kivételes esetben ennél egyszerűbb megoldás hibás eredményt adna (de attól még járna amúgy a max pontszám valószínűleg)
+            int nőiMaxIdx = -1;
+            int férfiMaxIdx = -1;
+            for (int i = 0; i < adatok.Length; i++)
+            {
+                string[] adatsor = adatok[i];
+                if (adatsor[TávSzázalékIndex] == "100")
+                {
+                    if (adatsor[KategóriaIndex] == "Noi")
+                    {
+                        if (nőiMaxIdx == -1 || IdőÓrában(adatsor[VersenyIdőIndex]) < IdőÓrában(adatok[nőiMaxIdx][VersenyIdőIndex]))
+                        {
+                            nőiMaxIdx = i;
+                        }
+                    }
+                    else
+                    {
+                        if (férfiMaxIdx == -1 || IdőÓrában(adatsor[VersenyIdőIndex]) < IdőÓrában(adatok[férfiMaxIdx][VersenyIdőIndex]))
+                        {
+                            férfiMaxIdx = i;
+                        }
+                    }
+                }
+            }
+            MegoldásKiiratás(8,
+                $"Verseny győztesei\n" +
+                $"\tNők: {adatok[nőiMaxIdx][NévIndex]} ({adatok[nőiMaxIdx][RajtszámIndex]}.) - {adatok[nőiMaxIdx][VersenyIdőIndex]}\n" +
+                $"\tFérfiak {adatok[férfiMaxIdx][NévIndex]} ({adatok[férfiMaxIdx][RajtszámIndex]}.) - {adatok[férfiMaxIdx][VersenyIdőIndex]}");
+        }
+
+
         /// <summary>
         /// Kérje be a felhasználótól egy sportoló nevét, majd határozza meg és írja ki a minta szerint, hogy a sportoló indult-e a versenyen! A keresést ne folytassa, ha az eredményt meg tudja határozni! Ha a sportoló indult a versenyen, akkor azt is írja ki a képernyőre, hogy a teljes távot teljesítette-e! Feltételezheti, hogy nem indultak azonos nevű sportolók ezen a versenyen.         
         /// </summary>
