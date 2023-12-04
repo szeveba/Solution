@@ -125,7 +125,7 @@
                 }
             }
             // A feladat szerint feltételezhetem, hogy lesz legalább egy a feltételt teljesítő sportoló, így nem kell aggódni a 0-val való osztás miatt.
-            double átlag = szum / db;
+            double átlag = Math.Round(szum / db, 12);
             MegoldásKiiratás(7, $"Átlagos idő: {átlag} óra");
         }
     }
