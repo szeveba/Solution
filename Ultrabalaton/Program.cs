@@ -94,5 +94,18 @@
                 Console.WriteLine("Nem");
             }
         }
+        /// <summary>
+        /// Készítsen IdőÓrában azonosítóval valós típusú értékkel visszatérő függvényt vagy jellemzőt, ami a versenyző időeredményét órában határozza meg! Egy óra 60 percből, illetve 3600 másodpercből áll.
+        /// </summary>
+        /// <param name="időbélyeg">óra:perc:másodperc alakban meghatározott időbélyeg</param>
+        /// <returns>időbélyeg értéke órában kifejezve</returns>
+        private static double IdőÓrában(string időbélyeg)
+        {
+            var splits = időbélyeg.Split(':');
+            int óra = int.Parse(splits[0]);
+            int perc = int.Parse(splits[1]);
+            int másodperc = int.Parse(splits[2]);
+            return óra + perc / 60 + másodperc / 3600;
+        }
     }
 }
