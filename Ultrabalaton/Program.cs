@@ -106,7 +106,7 @@
             int óra = int.Parse(splits[0]);
             int perc = int.Parse(splits[1]);
             int másodperc = int.Parse(splits[2]);
-            return óra + perc / 60 + másodperc / 3600;
+            return óra + perc / 60.0 + másodperc / 3600.0;
         }
         /// <summary>
         /// Határozza meg és írja ki a minta szerint a teljes távot teljesítő férfi sportolók átlagos idejét órában! Feltételezheti, hogy legalább egy ilyen sportoló volt.
