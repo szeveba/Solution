@@ -7,4 +7,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="ub2017egyeni.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ub2017egyeni.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
