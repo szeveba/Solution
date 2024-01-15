@@ -1,6 +1,6 @@
 ﻿namespace BookRental.ML
 {
-    internal class Author
+    public class Author
     {
         public Author()
         {

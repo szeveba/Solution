@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookRental"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Loaded="Window_Loaded"
+        Title="Könyvtár ERP" MinHeight="200" Height="450" MinWidth="300" Width="300">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Könyvek" HorizontalAlignment="Center" Margin="5"/>
+        <ListBox Grid.Row="1" MouseDoubleClick="LBBooks_MouseDoubleClick" HorizontalContentAlignment="Center" x:Name="LBBooks" SelectionChanged="LBBooks_SelectionChanged" Margin="5,5,5,0"/>
+        <Grid Grid.Row="2" Margin="2.5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Button Click="BookEditor_Click" Content="Új" Margin="2.5" />
+            <Button x:Name="BookEditButton" Grid.Column="1" Click="BookEdit_Click" Content="Szerkesztés" IsEnabled="False" Margin="2.5" />
+            <Button x:Name="BookDeleteButton" Grid.Column="2" Click="BookDelete_Click" Content="Törlés" IsEnabled="False" Margin="2.5"/> 
+        </Grid>
     </Grid>
 </Window>

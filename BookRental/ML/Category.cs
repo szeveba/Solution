@@ -1,6 +1,6 @@
 ﻿namespace BookRental.ML
 {
-    internal class Category
+    public class Category
     {
         public Category()
         {
