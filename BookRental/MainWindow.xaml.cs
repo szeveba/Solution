@@ -47,12 +47,18 @@ namespace BookRental
 
         private void SaveDB()
         {
-            var op = new List<string>();
+            var bookOP = new List<string>();
+            var authorOP = new List<string>();
             foreach (Book item in LBBooks.Items)
             {
-                op.Add(item.ToCSV());
+                bookOP.Add(item.ToCSV());
             }
-            File.WriteAllLines(bookDBName, op.ToArray());
+            foreach (Author item in LBAuthors.Items)
+            {
+                authorOP.Add(item.ToCSV());
+            }
+            File.WriteAllLines(bookDBName, bookOP.ToArray());
+            File.WriteAllLines(authorDBName, authorOP.ToArray());
         }
 
         private void LBBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -90,7 +96,7 @@ namespace BookRental
         {
             if (File.Exists(bookDBName))
             {
-                var books = File.ReadAllLines(bookDBName).Select(x=> Book.FromCsv(x));
+                var books = File.ReadAllLines(bookDBName).Select(x => Book.FromCsv(x));
                 foreach (var item in books)
                 {
                     LBBooks.Items.Add(item);
@@ -100,8 +106,56 @@ namespace BookRental
             {
                 File.Create(bookDBName);
             }
+            if (File.Exists(authorDBName))
+            {
+                var authors = File.ReadAllLines(authorDBName).Select(x => Author.FromCsv(x));
+                foreach (var item in authors)
+                {
+                    LBAuthors.Items.Add(item);
+                }
+            }
+            else
+            {
+                File.Create(authorDBName);
+            }
         }
 
         const string bookDBName = "books.db";
+        const string authorDBName = "authors.db";
+
+        private void AuthorEditor_Click(object sender, RoutedEventArgs e)
+        {
+            AuthorEditor window = new AuthorEditor();
+            window.ShowDialog();
+            if (window.Author != null)
+            {
+                LBAuthors.Items.Add(window.Author);
+                SaveDB();
+            }
+        }
+
+        private void AuthorEdit_Click(object sender, RoutedEventArgs e)
+        {
+            AuthorEditor window = new AuthorEditor();
+            window.Author = (Author)LBAuthors.SelectedItem;
+            window.ShowDialog();
+            LBAuthors.Items.Refresh();
+            if(window.DialogResult == true)
+            {
+                SaveDB();
+            }
+        }
+
+        private void AuthorDelete_Click(object sender, RoutedEventArgs e)
+        {
+            LBAuthors.Items.Remove(LBAuthors.SelectedItem);
+            SaveDB();
+        }
+
+        private void LBAuthors_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AuthorEditButton.IsEnabled = LBAuthors.SelectedItem != null;
+            AuthorDeleteButton.IsEnabled = LBAuthors.SelectedItem != null;
+        }
     }
 }

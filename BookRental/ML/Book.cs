@@ -14,11 +14,11 @@ namespace BookRental.ML
         public Book()
         {
             ID = Guid.NewGuid().ToString();
-            Authors = new List<Author>();
+            Authors = new List<Book>();
             Categories = new List<Category>();
         }
         public string? Title { get; set; }
-        public List<Author> Authors { get; set; }
+        public List<Book> Authors { get; set; }
         public List<Category> Categories { get; set; }
         public override string ToString()
         {

@@ -1,0 +1,23 @@
+﻿<Window x:Class="BookRental.VW.AuthorEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookRental.VW"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="Szerzőszerkesztő" Height="120" MinHeight="120" MinWidth="270" Width="270">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="1*" MinWidth="150" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Content="Név" Grid.Row="0" Grid.Column="0" Margin="5"/>
+        <TextBox x:Name="TBName" TextChanged="TBTitle_TextChanged" VerticalContentAlignment="Center" Text="" Grid.Row="0" Grid.Column="1" Margin="5"/>
+        <Button x:Name="SaveButton" Click="Save_Click" Content="Mentés" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" IsEnabled="False" />
+    </Grid>
+</Window>
