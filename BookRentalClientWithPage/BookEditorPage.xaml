@@ -1,0 +1,42 @@
+﻿<Page x:Class="BookRentalClientWithPage.BookEditorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookRentalClientWithPage"
+      mc:Ignorable="d" 
+      d:Background="White"
+      
+      Title="Könyv szerkesztő">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Könyv szerkesztés" HorizontalContentAlignment="Center" Margin="2.5"/>
+        <TextBlock Text="Szerző" Grid.Row="1" Margin="2.5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Cím" Grid.Row="2" Margin="2.5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Típus" Grid.Row="3" Margin="2.5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Megjelenés" Grid.Row="4" Margin="2.5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="TB_Author" Margin="2.5"/>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="TB_Title" Margin="2.5"/>
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="TB_Type" Margin="2.5"/>
+        <DatePicker Grid.Row="4" Grid.Column="1" x:Name="DP_Publish" Margin="2.5"/>
+        <Grid Grid.Row="5" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="BTN_Save" Grid.Column="0" Content="Mentés" Margin="2.5"/>
+            <Button x:Name="BTN_Cancel" Grid.Column="1" Content="Mégse" Margin="2.5"/>
+        </Grid>
+    </Grid>
+</Page>
