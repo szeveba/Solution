@@ -12,6 +12,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button Content="Start" Click="SwitchToPage1"/>
-        <Frame Grid.Row="2" x:Name="MainFrame"/>
+        <Frame Grid.Row="2" x:Name="MainFrame" NavigationUIVisibility="Automatic"/>
     </Grid>
 </Window>

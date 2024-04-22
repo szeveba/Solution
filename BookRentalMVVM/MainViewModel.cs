@@ -36,6 +36,9 @@ namespace BookRentalMVVM
         {
             switch (e.PropertyName)
             {
+                case nameof(SearchPhrase):
+                    logic.Search(SearchPhrase, ListedBooks);
+                    break;
                 case nameof(Book):
                     ManipulationEnabled = Book != null;
                     break;
